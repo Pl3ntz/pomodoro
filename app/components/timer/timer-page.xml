@@ -1,0 +1,35 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-gray-100">
+    <ActionBar title="Pomodoro Timer" class="bg-red-500 text-white" />
+    
+    <GridLayout rows="auto, *, auto">
+        <!-- Estado Atual -->
+        <Label row="0" text="{{ currentState }}" class="text-2xl text-center text-gray-700 font-bold p-4" />
+        
+        <!-- Timer Display -->
+        <StackLayout row="1" class="m-4">
+            <GridLayout width="250" height="250" class="bg-white rounded-full">
+                <Progress value="{{ progressPercentage }}" maxValue="100" class="circle-progress" />
+                <Label text="{{ formattedTime }}" 
+                       class="text-6xl font-bold text-center text-red-500" />
+            </GridLayout>
+            
+            <!-- Controles -->
+            <FlexboxLayout justifyContent="center" class="mt-4">
+                <Button text="{{ isRunning ? 'Pausar' : 'Iniciar' }}" 
+                        tap="{{ toggleTimer }}"
+                        class="{{ isRunning ? 'bg-yellow-500' : 'bg-green-500' }} text-white font-bold p-4 m-2 rounded-lg" 
+                        width="120" />
+                <Button text="Reiniciar"
+                        tap="{{ resetTimer }}"
+                        class="bg-red-500 text-white font-bold p-4 m-2 rounded-lg"
+                        width="120" />
+            </FlexboxLayout>
+        </StackLayout>
+        
+        <!-- Estatísticas -->
+        <StackLayout row="2" class="bg-white p-4">
+            <Label text="Pomodoros Completados" class="text-lg text-center text-gray-600" />
+            <Label text="{{ completedPomodoros }}" class="text-4xl font-bold text-center text-red-500" />
+        </StackLayout>
+    </GridLayout>
+</Page>
